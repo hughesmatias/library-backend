@@ -37,7 +37,7 @@ app.post("/books",function (req,res){
 	fs.readFile(file, function (err, data) {
 	  if (err) throw err;
 	  var fileBooks = JSON.parse(data);
-	  var newId = fileBooks.length+1;
+	  var newId = fileBooks[fileBooks.length-1].id;
 	  newId = newId +1;
 	  form["id"] = JSON.stringify(newId);
 	  fileBooks.push(form);
