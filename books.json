@@ -1,50 +1,34 @@
 [
   {
-    "id": "1",
-    "title": "El Señor De Los Anillos III- El Retorno Del Rey",
-    "author": "Tolkien",
-    "description": "Final de la saga",
-    "pagesAmount": "300",
-    "creationDate": "2013-12-23 16:00:04"
-  },
-  {
     "id": "2",
     "title": "Harry Potter y el prisionero de Azkaban",
-    "author": " J. K. Rowling ",
+    "authorId": "1",
     "description": "w",
     "pagesAmount": "319",
     "creationDate": "2015-08-23 12:00:04"
   },
   {
     "id": "3",
-    "title": "Batman Begins",
-    "author": "Bruno Wayne",
-    "description": "woweq jqd d qowd qodq o",
-    "pagesAmount": "657",
-    "creationDate": "2014-12-29 15:00:04"
+    "title": "Harry Potter 2",
+    "authorId": "1",
+    "description": "w",
+    "pagesAmount": "319",
+    "creationDate": "2015-08-23 12:00:04"
   },
   {
-    "title": "Probando el agregar de nuevo",
-    "author": "autor probando",
-    "description": "probando!!",
-    "pagesAmount": "111",
-    "creationDate": "Mon Jan 11 2016 12:06:28 GMT-0300 (ART)",
-    "id": "4"
+    "id": "4",
+    "title": "Harry Potter 1",
+    "authorId": "1",
+    "description": "w",
+    "pagesAmount": "319",
+    "creationDate": "2015-08-23 12:00:04"
   },
   {
-    "title": "prueba 11.4",
-    "author": "autor 11",
-    "description": "qieqowemqwoemq",
-    "pagesAmount": "1111114",
-    "creationDate": "Mon Jan 11 2016 17:10:35 GMT-0300 (ART)",
-    "id": "6"
-  },
-  {
-    "title": "prueba 11.5",
-    "author": "autor 11",
-    "description": "ameoiqwmeoqwmeoqwmeqowmeo",
-    "pagesAmount": "1111115",
-    "creationDate": "Mon Jan 11 2016 17:12:13 GMT-0300 (ART)",
-    "id": "7"
+    "id": "5",
+    "title": "Harry Potter 5",
+    "authorId": "1",
+    "description": "w",
+    "pagesAmount": "319",
+    "creationDate": "2015-08-23 12:00:04"
   }
 ]
