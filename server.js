@@ -20,30 +20,26 @@ function readFile(file,callback){
 	});
 }
 
-function findBookById(file,id,callback){
+function findById(file,id,callback){
 	readFile(file,function(data){
-		books = JSON.parse(data);
-		var book = books.find(function(book){
-			return book.id == id;
+		objs = JSON.parse(data);
+		var obj = objs.find(function(obj){
+			return obj.id == id;
 		})
-		callback(book);
+		callback(obj);
 	})
 }
 
 app.get("/books",function (req,res){
-	fs.readFile(bookFile,function (err,data){
-		res.end(data.toString());
-	});
+	readFile(bookFile,function(data){
+		res.end(data.toString())
+	})
 });
 
 
 app.get("/books/:id",function (req,res){
 	var id = req.params.id;
-	fs.readFile(bookFile,function (err,data){
-		var books = JSON.parse(data);
-		var book = books.find(function (book) {
-			return book.id == id
-		})
+	findById(bookFile,id,function (book){
 		fs.readFile(authorFile,function (err,data){
 			var authors = JSON.parse(data);
 			var author = authors.find(function (author){
@@ -128,7 +124,7 @@ app.get("/authors",function (req,res){
 
 app.get("/authors/:id",function (req,res){
 	var id = req.params.id;
-	findBookById(authorFile,id,function (data){
+	findById(authorFile,id,function (data){
 		res.end(JSON.stringify(data));
 	})
 });
@@ -152,7 +148,6 @@ app.put("/authors/:id",function (req,res){
 		var authorsObj = JSON.parse(data);
 		authorsObj.find(function(obj){
 			if(obj.id == id){
-				console.log(objAuthor.name);
 				obj.name = objAuthor.name;
 			}
 		})
@@ -162,31 +157,41 @@ app.put("/authors/:id",function (req,res){
 	})
 });
 
+function deleteElemById(file,id,callback){
+	readFile(file,function(objFile){
+		deleteElement(JSON.parse(objFile),id,callback) 
+	})
+}
+function deleteElement(objs,comp,id,callback){
+	objs.forEach(function(obj,index){
+		if ( id = comp){
+			objs.splice(index,1);
+		}
+	})
+	callback(objs);
+}
+
 app.delete("/authors/:id",function (req,res){
 	var id = req.params.id;
 	fs.readFile(authorFile,function (err,data){
 		var authorsObj = JSON.parse(data);
 		authorsObj.forEach(function (author, index){
 			if( id == author.id){
-				fs.readFile(bookFile,function (err,data){
-					var books = JSON.parse(data);
-					books.find(function(book){
-						if(book.author == id){
-							console.log("a");
-							return false;
-						}else{
-							console.log("b");
-							return true;
-						}
-						//authorsObj.splice(index,1)
-					})
-				})
-			}
+				authorsObj.splice(index,1);
+			}	
 		})
 		authorsObj = JSON.stringify(authorsObj);
 		fs.writeFile(authorFile,authorsObj);
-		res.end(JSON.stringify(id));
 	})
+	fs.readFile(bookFile,function (err,data){
+		var books = JSON.parse(data);
+		books = books.filter(function (book) {
+			return book.author !== id
+		});
+		
+		fs.writeFile(bookFile, JSON.stringify(books));
+	})
+	res.end(JSON.stringify(id));
 })
 
 app.listen(port)

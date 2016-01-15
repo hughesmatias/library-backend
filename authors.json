@@ -1,1 +1,22 @@
-[{"id":1,"name":"J. K. Rowling"},{"id":2,"name":"Bruno Wayne"},{"name":"Juan Gelmán","id":3},{"name":"Ernesto Kahan","id":4},{"name":"Gabriel García Márquez","id":5},{"name":"Umberto Eco","id":6}]
+[
+  {
+    "id": "1",
+    "name": "J. K. Rowling"
+  },
+  {
+    "name": "Bruce Wayne",
+    "id": "2"
+  },
+  {
+    "name": "Juan Gelmán",
+    "id": "3"
+  },
+  {
+    "name": "Ernesto Kahan",
+    "id": "4"
+  },
+  {
+    "name": "Gabriel García Márquez",
+    "id": 5
+  }
+]
