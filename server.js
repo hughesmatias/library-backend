@@ -44,21 +44,35 @@ app.get("/books/:id",function (req,res){
 		var book = books.find(function (book) {
 			return book.id == id
 		})
-		res.end(JSON.stringify(book));
+		fs.readFile(authorFile,function (err,data){
+			var authors = JSON.parse(data);
+			var author = authors.find(function (author){
+				return book.author == author.id;
+			});
+			book.author = author.name;
+			res.end(JSON.stringify(book));
+		})
 	})
 });
 
 app.post("/books",function (req,res){
 	var form = req.body;
 	fs.readFile(bookFile, function (err, data) {
-	  if (err) throw err;
-	  var fileBooks = JSON.parse(data);
-	  var newId = fileBooks[fileBooks.length-1].id;
-	  newId = newId +1;
-	  form["id"] = JSON.stringify(newId);
-	  fileBooks.push(form);
-	  fileBooks = JSON.stringify(fileBooks);
-	  fs.writeFile(bookFile,fileBooks);
+		if (err) throw err;
+		var fileBooks = JSON.parse(data);
+		fs.readFile(authorFile,function (err,data){
+			authorsObj = JSON.parse(data);
+			var author = authorsObj.find(function(author){
+				return author.name == form.author;
+			})
+			var newId = fileBooks[fileBooks.length-1].id;
+			newId = newId +1;// no suma concatena al id ultimo un uno.
+			form["author"]= JSON.stringify(author.id);
+			form["id"] = JSON.stringify(newId);
+			fileBooks.push(form);
+			fileBooks = JSON.stringify(fileBooks);
+			fs.writeFile(bookFile,fileBooks);
+		})
 	});
 
 	res.end(JSON.stringify(form));
@@ -71,14 +85,20 @@ app.put("/books/:id",function (req,res){
 		var fileBooks = JSON.parse(data);
 		fileBooks.find(function (book) {
 			if (id == book.id){
-				book.title = obj.title;
-				book.author = obj.author;
-				book.description = obj.description;
-				book.pagesAmount = obj.pagesAmount;
+				fs.readFile(authorFile,function (err,data){
+					var authorsObj = JSON.parse(data);
+					var author = authorsObj.find(function (author){
+						return obj.author == author.name
+					})
+					book.title = obj.title;
+					book.author = author.id;
+					book.description = obj.description;
+					book.pagesAmount = obj.pagesAmount;
+					fileBooks = JSON.stringify(fileBooks);
+					fs.writeFile(bookFile,fileBooks);
+				})
 			}
 		})
-		fileBooks = JSON.stringify(fileBooks);
-		fs.writeFile(bookFile,fileBooks);
 		res.end(JSON.stringify(obj));
 	})
 });
@@ -148,8 +168,19 @@ app.delete("/authors/:id",function (req,res){
 		var authorsObj = JSON.parse(data);
 		authorsObj.forEach(function (author, index){
 			if( id == author.id){
-
-				authorsObj.splice(index,1)
+				fs.readFile(bookFile,function (err,data){
+					var books = JSON.parse(data);
+					books.find(function(book){
+						if(book.author == id){
+							console.log("a");
+							return false;
+						}else{
+							console.log("b");
+							return true;
+						}
+						//authorsObj.splice(index,1)
+					})
+				})
 			}
 		})
 		authorsObj = JSON.stringify(authorsObj);

@@ -9,16 +9,16 @@
   },
   {
     "id": "3",
-    "title": "Harry Potter 2",
-    "author": "1",
-    "description": "w",
-    "pagesAmount": "319",
+    "title": "Batman Begins",
+    "author": 2,
+    "description": "erqereewr",
+    "pagesAmount": "111111",
     "creationDate": "2015-08-23 12:00:04"
   },
   {
     "id": "4",
-    "title": "Harry Potter 1",
-    "author": "1",
+    "title": "Harry Potter 2",
+    "author": 1,
     "description": "w",
     "pagesAmount": "319",
     "creationDate": "2015-08-23 12:00:04"
@@ -30,5 +30,13 @@
     "description": "w",
     "pagesAmount": "319",
     "creationDate": "2015-08-23 12:00:04"
+  },
+  {
+    "title": "Batman Begins",
+    "author": "2",
+    "description": "erqereewr",
+    "pagesAmount": "111111",
+    "creationDate": "Fri Jan 15 2016 11:08:35 GMT-0300 (ART)",
+    "id": "6"
   }
 ]
