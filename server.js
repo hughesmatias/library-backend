@@ -31,14 +31,19 @@ function findBookById(file,id,callback){
 }
 
 app.get("/books",function (req,res){
-	readFile(bookFile,function(data){
+	fs.readFile(bookFile,function (err,data){
 		res.end(data.toString());
-	})
+	});
 });
+
 
 app.get("/books/:id",function (req,res){
 	var id = req.params.id;
-	findBookById(bookFile,id,function(book){
+	fs.readFile(bookFile,function (err,data){
+		var books = JSON.parse(data);
+		var book = books.find(function (book) {
+			return book.id == id
+		})
 		res.end(JSON.stringify(book));
 	})
 });
