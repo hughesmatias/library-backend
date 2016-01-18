@@ -62,8 +62,8 @@ app.post("/books",function (req,res){
 				return author.name == form.author;
 			})
 			var newId = fileBooks[fileBooks.length-1].id;
-			newId = newId +1;// no suma concatena al id ultimo un uno.
-			form["author"]= JSON.stringify(author.id);
+			newId = parseInt(newId) +1;
+			form["author"]= author.id;
 			form["id"] = JSON.stringify(newId);
 			fileBooks.push(form);
 			fileBooks = JSON.stringify(fileBooks);
@@ -134,11 +134,12 @@ app.post("/authors",function (req,res){
 	fs.readFile(authorFile, function(err,data){
 		var fileAuthors = JSON.parse(data);
 		var newId = fileAuthors[fileAuthors.length-1].id;
-		obj["id"] = newId +1;
+		obj["id"] = parseInt(newId) +1;
+		obj["id"] = JSON.stringify(obj["id"]);
 		fileAuthors.push(obj);
 		fs.writeFile("authors.json",JSON.stringify(fileAuthors));
+		res.end(JSON.stringify(obj));
 	})
-	res.end(JSON.stringify(obj));
 });
 
 app.put("/authors/:id",function (req,res){
@@ -153,13 +154,13 @@ app.put("/authors/:id",function (req,res){
 		})
 		authorsObj = JSON.stringify(authorsObj);
 		fs.writeFile(authorFile,authorsObj);
-		res.end(JSON.stringify(objAuthor));
 	})
+	res.end(JSON.stringify(objAuthor));
 });
 
-function deleteElemById(file,id,callback){
+function deleteElemById(file,comp,id,callback){
 	readFile(file,function(objFile){
-		deleteElement(JSON.parse(objFile),id,callback) 
+		deleteElement(JSON.parse(objFile),comp,id,callback) 
 	})
 }
 function deleteElement(objs,comp,id,callback){
