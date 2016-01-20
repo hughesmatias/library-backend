@@ -5,6 +5,7 @@ var book = function (){
 
 	var bookFile ="books.json";
 	var authorFile = "authors.json";
+	var fs = require("fs");
 
 	self.getBooks =function (req,res){
 		util.readFile(bookFile,function(data){
@@ -72,7 +73,7 @@ var book = function (){
 	self.deleteBook = function (req,res){
 	  var id = req.params.id;
 	  util.deleteElemById(bookFile,id,function(objs){
-		fileBooks = JSON.stringify(fileBooks);
+		fileBooks = JSON.stringify(objs);
 		fs.writeFile(bookFile,fileBooks);
 	  })
 	  res.end(JSON.stringify(id));

@@ -5,6 +5,7 @@ var author= function(){
 
 	var bookFile ="books.json";
 	var authorFile = "authors.json";
+	var fs = require("fs");
 
 	var self = this;
 	self.getAuthor = function(req,res){
@@ -19,6 +20,35 @@ var author= function(){
 			res.end(JSON.stringify(data));
 		})
 	};
+
+	self.getAuthorsByName = function(req,res){
+		util.readFile(authorFile,function (data){
+			var objs = [];
+			var json = JSON.parse(data);
+			json.forEach(function(obj) {
+   				objs.push(obj.name);
+			});
+			res.end(JSON.stringify(objs));
+		})
+	};
+
+	// self.getAuthorsByName2 = function(req,res){
+	// 	console.log(req.query.q);
+	// 	util.readFile(authorFile,function (data){
+	// 		var objs = [];
+	// 		var json = JSON.parse(data);
+	// 		json.forEach(function(obj) {
+	// 				objs.push(obj.name);
+	// 		});
+	// 		objs= objs.filter(function(name){
+	// 			var expresion = new RegExp(^name);
+	// 			if ( req.query.q == name.match(expresion) ){
+	// 				return name
+	// 			}
+	// 		})
+	// 		res.end(JSON.stringify(objs));
+	// 	});
+	// }
 
 	self.postAuthor = function(req,res){
 		var obj = req.body;
