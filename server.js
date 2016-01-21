@@ -32,8 +32,6 @@ app.get("/authors/:id", author.getAuthorById);
 
 app.get("/authorsall", author.getAuthorsByName);
 
-//app.get("/authorsQuery",author.getAuthorsByName2);
-
 app.post("/authors", author.postAuthor);
 
 app.put("/authors/:id",author.putAuthor);

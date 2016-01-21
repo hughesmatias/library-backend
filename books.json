@@ -1,1 +1,42 @@
-[{"id":"2","title":"Harry Potter y el prisionero de Azkaban","author":"5","description":"w w w w w w w  w q   q   a  a ","pagesAmount":"99","creationDate":"2015-08-23 12:00:04"},{"id":"4","title":"Harry Potter 2","author":"1","description":"<h2>aca harry roba el auto de los wesly&nbsp;</h2>","pagesAmount":"319","creationDate":"2015-08-23 12:00:04"},{"id":"5","title":"Harry Potter 5","author":"1","description":"w jyger fer fer fer fe","pagesAmount":"319","creationDate":"2015-08-23 12:00:04"},{"id":"6","title":"Batman 1","author":"2","description":"w w w dale batman","pagesAmount":"489","creationDate":"2015-08-23 12:00:04"},{"id":"7","title":"Batman Begins 2","author":"2","description":"wwwww cuack","pagesAmount":"987","creationDate":"2015-08-23 12:00:04"},{"title":"batman 2","author":"2","description":"<p>batman <u>dos</u> la de<b> lala</b></p>","pagesAmount":"435","creationDate":"Wed Jan 20 2016 14:33:53 GMT-0300 (ART)","id":"8"}]
+[
+  {
+    "id": "2",
+    "title": "Harry Potter y el prisionero de Azkaban",
+    "author": "5",
+    "description": "w w w w w w w  w q   q   a  a ",
+    "pagesAmount": "99",
+    "creationDate": "2015-08-23 12:00:04"
+  },
+  {
+    "id": "4",
+    "title": "Harry Potter 2",
+    "author": "1",
+    "description": "<h2>aca harry roba el auto de los wesly&nbsp;</h2>",
+    "pagesAmount": "319",
+    "creationDate": "2015-08-23 12:00:04"
+  },
+  {
+    "id": "5",
+    "title": "Harry Potter 5",
+    "author": "1",
+    "description": "w jyger fer fer fer fe",
+    "pagesAmount": "319",
+    "creationDate": "2015-08-23 12:00:04"
+  },
+  {
+    "id": "6",
+    "title": "Batman 1",
+    "author": "2",
+    "description": "w w w dale batman",
+    "pagesAmount": "489",
+    "creationDate": "2015-08-23 12:00:04"
+  },
+  {
+    "id": "7",
+    "title": "Batman Begins 2",
+    "author": "2",
+    "description": "wwwww cuack",
+    "pagesAmount": "987",
+    "creationDate": "2015-08-23 12:00:04"
+  }
+]
